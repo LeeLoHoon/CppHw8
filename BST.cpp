@@ -5,16 +5,22 @@
 using namespace std;
 
 string BST::search(tree_node *tree,string line){
-  
+  int a,b;
+  str c,newLine,start,medium,end;
   if(tree == NULL)
-    return;
+    return NULL;
   search(tree->left_child,line);
-  line.find(tree->str1);
+  a=line.find(tree->str1);
+  b=tree->str1.lenth();
+  strat=line.substr(0,a);
+  medium=tree->str2;
+  end=line.substr(a+b-1);
+  newLine=start+medium+end;
   if()
   //cout<<"("<<tree->str1<<","<<tree->str2<<")"<<endl;
   search(tree->right_child,line);
   
-
+  return newLine;
 
 /*  if(tree==NULL){
     return NULL;  
