@@ -4,8 +4,8 @@
 using namespace std;
 
 typedef struct node {
-int num;
-string str;
+string str1;
+string str2;
 struct node *left_child, *right_child;
 } tree_node;
 
@@ -16,16 +16,16 @@ class BST{
     BST(){
       root=NULL;
     };
-    tree_node* search(tree_node *tree,int key);
-    tree_node* search(int key);
-    tree_node* Add(tree_node *tree,int key, string value);
-    void Add(int key, string value){
+    string search(tree_node *tree,string key);
+    string search(string key);
+    tree_node* Add(tree_node *tree,string key, string value);
+    void Add(string key, string value){
       root=Add(root,key,value);
     }
-    void Delete(int key){
+    void Delete(string key){
       root = Delete(root,key);
     }
-    tree_node* Delete(tree_node* tree,int key);
+    tree_node* Delete(tree_node* tree,string key);
     void Print(){
       Print(root);
     }
