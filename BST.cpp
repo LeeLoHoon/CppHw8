@@ -4,49 +4,60 @@
 
 using namespace std;
 
-tree_node* BST::search(tree_node *tree,int key){
-  if(tree==NULL){
+string BST::search(tree_node *tree,string line){
+  
+  if(tree == NULL)
+    return;
+  search(tree->left_child,line);
+  line.find(tree->str1);
+  if()
+  //cout<<"("<<tree->str1<<","<<tree->str2<<")"<<endl;
+  search(tree->right_child,line);
+  
+
+
+/*  if(tree==NULL){
     return NULL;  
   }
   while(tree!=NULL){
-    if(tree->num ==key) return NULL;
-    else if (key<tree->num)
-      if(tree->left_child == NULL) return tree;
+    if(key.compare(tree->str1)==0) return tree->str2;
+    else if (key.compare(tree->str1)<0)
+      if(tree->left_child == NULL) return NULL;
       else tree=tree->left_child;
     else                       
-      if (tree->right_child == NULL) return tree; 
+      if (tree->right_child == NULL) return NULL; 
       else tree = tree->right_child;
   }
   return NULL;
-}
-tree_node *BST::search(int key){
+}*/
+string BST::search(string line){
   return search(root, key);
 }
 
 
-tree_node* BST::Add(tree_node* tree, int key, string value){
+tree_node* BST::Add(tree_node* tree, string key, string value){
   if(tree==NULL){
     tree = new tree_node;
-    tree->num = key;
-    tree->str = value;
+    tree->str1 = key;
+    tree->str2 = value;
     tree->left_child=NULL;
     tree->right_child=NULL;
   }  
-  else if(key==tree->num){
+  else if(key.compare(tree->str1)==0){
     cout<<key<<" is already in the tree."<<endl;
   } 
   else{
-    if(key>tree->num){
+    if(key.compare(tree->str1)>0){
       tree->right_child = Add(tree->right_child,key,value);}
-    else if(key<tree->num){
+    else if(key.compare(tree->str1)<0){
       tree->left_child=Add(tree->left_child,key,value);
     }
 }
   return tree;
 }
-tree_node* BST::Delete(tree_node* tree,int key){
+tree_node* BST::Delete(tree_node* tree,string key){
   tree_node* temp;
-  if(tree->num==key){
+  if(key.compare(tree->str1)==0){
     if((tree->left_child==NULL)&&(tree->right_child==NULL)){
       tree=NULL;
       return tree;}
@@ -61,23 +72,23 @@ tree_node* BST::Delete(tree_node* tree,int key){
       delete temp;
     }
     else{
-      int a;
+      string a;
       string b;
       temp=findMin(tree->right_child);
-      a=temp->num;
-      b=temp->str;
+      a=temp->str1;
+      b=temp->str2;
       Delete(a);
-      tree->num=a;
-      tree->str=b;
+      tree->str1=a;
+      tree->str2=b;
     }
   }
-  else if(key>tree->num){
+  else if(key.compare(tree->str1)>0){
     if(tree->right_child==NULL){
       cout<<key<<" is not in the tree."<<endl;
       return tree;}
     tree->right_child=Delete(tree->right_child,key);
     }
-  else if(key<tree->num){
+  else if(key.compare(tree->str1)<0){
     if(tree->left_child==NULL){
       cout<<key<<" is not in the tree."<<endl;
       return tree;}
@@ -100,6 +111,6 @@ void BST::Print(tree_node* tree){
   if(tree == NULL)
     return;
   Print(tree->left_child);
-  cout<<"("<<tree->num<<","<<tree->str<<")"<<endl;
+  cout<<"("<<tree->str1<<","<<tree->str2<<")"<<endl;
   Print(tree->right_child);
 }
