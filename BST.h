@@ -16,6 +16,7 @@ class BST{
     BST(){
       root=NULL;
     };
+  
     string search(tree_node *tree,string key);
     string search(string key);
     tree_node* Add(tree_node *tree,string key, string value);
