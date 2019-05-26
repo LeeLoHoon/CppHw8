@@ -16,20 +16,10 @@ class BST{
     BST(){
       root=NULL;
     };
-  
     string search(tree_node *tree,string key);
     string search(string key);
     tree_node* Add(tree_node *tree,string key, string value);
     void Add(string key, string value){
       root=Add(root,key,value);
     }
-    void Delete(string key){
-      root = Delete(root,key);
-    }
-    tree_node* Delete(tree_node* tree,string key);
-    void Print(){
-      Print(root);
-    }
-    void Print(tree_node* tree);
-    tree_node* findMin(tree_node* tree);
 };
