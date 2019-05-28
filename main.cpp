@@ -1,3 +1,4 @@
+//띄어쓰기로 구분
 #include "BST.h" 
 #include <iostream>
 #include <fstream>
